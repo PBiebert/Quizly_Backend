@@ -143,7 +143,7 @@ sudo apt update && sudo apt install ffmpeg
 ```
 01_DEV/
 ├── core/               # Django project configuration (settings, urls, wsgi)
-├── auth/               # User authentication (register, login, logout, token refresh)
+├── accounts/           # User authentication (register, login, logout, token refresh)
 │   └── api/            # Serializers, views, URLs for authentication
 ├── quiz_management/    # Quiz creation, management and retrieval
 │   └── api/            # Serializers, views, URLs for quizzes
