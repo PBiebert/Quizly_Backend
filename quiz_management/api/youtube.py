@@ -18,7 +18,7 @@ def download_audio(url):
     os.makedirs(MEDIA_DIR, exist_ok=True)
 
     ydl_opts = {
-        "format": "bestaudio/best",
+        "format": "worstaudio/worst",
         "outtmpl": path,
         "quiet": True,
         "noplaylist": True,

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
     "accounts.apps.AccountsConfig",
+    "quiz_management.apps.QuizManagementConfig",
 ]
 
 MIDDLEWARE = [
