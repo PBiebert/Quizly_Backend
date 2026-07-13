@@ -1,14 +1,12 @@
-import token
-
 from django.conf import settings
-from regex import R
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework_simplejwt.exceptions import AuthenticationFailed
+from rest_framework_simplejwt.exceptions import AuthenticationFailed, TokenError
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from .serializers import CookieTokenObtainPairSerializer, RegistrationSerializer
 
@@ -111,16 +109,34 @@ class LoginView(TokenObtainPairView):
         set_tokens_as_cookies(response, {"access": access, "refresh": refresh})
 
         response.data = {"detail": "Login successfully!", "user": user}
-        print(request.COOKIES)
         return response
 
 
 class LogoutView(APIView):
+    """Loggt den User aus, indem das Refresh-Token blacklisted und beide
+    Token-Cookies gelöscht werden."""
+
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
-        token = RefreshToken(request.COOKIES.get("refresh_token"))
-        token.blacklist()
+        """Blacklistet das Refresh-Token aus dem Cookie und löscht die
+        Access-/Refresh-Token-Cookies."""
+
+        refresh_token = request.COOKIES.get("refresh_token")
+
+        if refresh_token is None:
+            return Response(
+                {"detail": "Refresh token not found!"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            RefreshToken(refresh_token).blacklist()
+        except TokenError:
+            return Response(
+                {"detail": "Refresh token is invalid!"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         response = Response(
             {
@@ -131,4 +147,48 @@ class LogoutView(APIView):
         response.delete_cookie("access_token", samesite="Lax")
         response.delete_cookie("refresh_token", samesite="Lax")
 
+        return response
+
+
+class CookieTokenRefreshView(TokenRefreshView):
+    """Refresh-View, die den Refresh-Token aus dem Cookie statt aus dem
+    Request-Body liest und das neue Access-Token wieder als HttpOnly-Cookie
+    setzt.
+
+    Nötig, weil der Refresh-Token als HttpOnly-Cookie gespeichert ist und
+    daher von JavaScript nicht ausgelesen und in den Request-Body gepackt
+    werden kann - die Standard-TokenRefreshView erwartet ihn aber im Body.
+    """
+
+    def post(self, request, *args, **kwargs):
+        """Liest das Refresh-Token aus dem Cookie, validiert es und setzt
+        ein neues Access-Token als HttpOnly-Cookie."""
+
+        refresh_token = request.COOKIES.get("refresh_token")
+
+        if refresh_token is None:
+            return Response(
+                {"detail": "Refresh token not found!"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        serializer = self.get_serializer(data={"refresh": refresh_token})
+        try:
+            serializer.is_valid(raise_exception=True)
+        except (TokenError, ValidationError):
+            return Response(
+                {"detail": "Refresh token is invalid!"},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+        access_token = serializer.validated_data.get("access")
+
+        response = Response({"detail": "Access-Token refreshed"})
+        response.set_cookie(
+            key="access_token",
+            value=access_token,
+            httponly=True,
+            secure=not settings.DEBUG,
+            samesite="Lax",
+        )
         return response
