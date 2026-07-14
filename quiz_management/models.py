@@ -3,6 +3,8 @@ from django.db import models
 
 
 class Quiz(models.Model):
+    """Ein aus einem YouTube-Video generiertes Quiz mit zugehörigen Fragen."""
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name="quizzes", on_delete=models.CASCADE
     )
@@ -17,6 +19,8 @@ class Quiz(models.Model):
 
 
 class Question(models.Model):
+    """Eine Multiple-Choice-Frage mit genau 4 Optionen, zugehörig zu einem Quiz."""
+
     quiz = models.ForeignKey(Quiz, related_name="questions", on_delete=models.CASCADE)
     question_title = models.CharField(max_length=255)
     question_options = models.JSONField()
