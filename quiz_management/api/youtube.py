@@ -8,7 +8,8 @@ path = str(MEDIA_DIR / "%(id)s.%(ext)s")
 
 
 def download_audio(url):
-    """Lädt die Audiospur eines YouTube-Videos herunter und gibt den
+    """
+    Lädt die Audiospur eines YouTube-Videos herunter und gibt den
     Dateipfad zurück.
 
     returns:
@@ -29,11 +30,13 @@ def download_audio(url):
 
 
 def delete_temp_audio(path):
-    """Löscht die temporäre Audiodatei.
+    """
+    Löscht die temporäre Audiodatei.
 
     args:
         path (str): Der Datei-Pfad zur temporären Audiodatei.
     """
+
     if os.path.exists(path):
         os.remove(path)
         print(f"Temporäre Datei {path} wurde gelöscht.")

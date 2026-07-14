@@ -1,0 +1,201 @@
+<mxfile host="65bd71144e" scale="1" border="10">
+    <diagram id="quizlyErDiagram" name="Seite-1">
+        <mxGraphModel dx="752" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- User: header y=40, rows y=70..160 (bottom=190) -->
+                <mxCell id="user_header" value="User" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=center;verticalAlign=middle;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r1_a" value="id" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="70" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r1_b" value="AutoField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="70" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r1_c" value="PK" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="70" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r2_a" value="username" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="100" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r2_b" value="CharField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="100" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r2_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="100" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r3_a" value="email" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="130" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r3_b" value="EmailField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="130" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r3_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="130" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r4_a" value="password" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="160" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r4_b" value="CharField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="160" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user_r4_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="160" width="60" height="30" as="geometry"/>
+                </mxCell>
+
+                <!-- Quiz: header y=250, rows y=280..460 (bottom=490) -->
+                <mxCell id="quiz_header" value="Quiz" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=center;verticalAlign=middle;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="250" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r1_a" value="id" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="280" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r1_b" value="AutoField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="280" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r1_c" value="PK" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="280" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r2_a" value="user" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="310" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r2_b" value="ForeignKey" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="310" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r2_c" value="User" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="310" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r3_a" value="title" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="340" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r3_b" value="CharField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="340" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r3_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="340" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r4_a" value="description" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="370" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r4_b" value="TextField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="370" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r4_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="370" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r5_a" value="video_url" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="400" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r5_b" value="URLField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="400" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r5_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="400" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r6_a" value="created_at" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="430" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r6_b" value="DateTimeField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="430" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r6_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="430" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r7_a" value="updated_at" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="460" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r7_b" value="DateTimeField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="460" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="quiz_r7_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="460" width="60" height="30" as="geometry"/>
+                </mxCell>
+
+                <!-- Question: header y=550, rows y=580..760 (bottom=790) -->
+                <mxCell id="question_header" value="Question" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=center;verticalAlign=middle;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="550" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r1_a" value="id" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="580" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r1_b" value="AutoField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="580" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r1_c" value="PK" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="580" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r2_a" value="quiz" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="610" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r2_b" value="ForeignKey" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="610" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r2_c" value="Quiz" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="610" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r3_a" value="question_title" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="640" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r3_b" value="CharField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="640" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r3_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="640" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r4_a" value="question_options" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="670" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r4_b" value="JSONField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="670" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r4_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="670" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r5_a" value="answer" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="700" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r5_b" value="CharField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="700" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r5_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="700" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r6_a" value="created_at" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="730" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r6_b" value="DateTimeField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="730" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r6_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="730" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r7_a" value="updated_at" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="760" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r7_b" value="DateTimeField" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="760" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="q_r7_c" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=6;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="760" width="60" height="30" as="geometry"/>
+                </mxCell>
+
+                <!-- Beziehungen: freistehend, keine source/target-Zellen -->
+                <mxCell id="edge_user_quiz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="175" y="190" as="sourcePoint"/>
+                        <mxPoint x="175" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_quiz_question" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="175" y="490" as="sourcePoint"/>
+                        <mxPoint x="175" y="550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

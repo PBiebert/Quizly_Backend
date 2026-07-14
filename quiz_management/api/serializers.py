@@ -24,6 +24,7 @@ class QuestionSerializer(serializers.ModelSerializer):
                 4 eindeutige Einträge enthält oder answer nicht in
                 question_options vorkommt.
         """
+
         options = data.get("question_options", [])
         if len(set(options)) != 4:
             raise serializers.ValidationError(
@@ -37,7 +38,8 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class QuestionCreateSerializer(QuestionSerializer):
-    """QuestionSerializer-Subklasse mit zusätzlichen read-only Timestamp-Feldern.
+    """
+    QuestionSerializer-Subklasse mit zusätzlichen read-only Timestamp-Feldern.
 
     Ergänzt created_at und updated_at (Format: "%Y-%m-%dT%H:%M:%S.%fZ") zu
     den von QuestionSerializer geerbten Feldern und der Validierung.
@@ -79,12 +81,14 @@ class QuizSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "created_at", "updated_at"]
 
     def validate_questions(self, value):
-        """Prüft, dass genau 10 Questions übergeben wurden.
+        """
+        Prüft, dass genau 10 Questions übergeben wurden.
 
         Raises:
             serializers.ValidationError: Wenn value nicht genau 10 Einträge
                 enthält.
         """
+
         if len(value) != 10:
             raise serializers.ValidationError(
                 "Es müssen exakt 10 Fragen vorhanden sein."
@@ -93,6 +97,7 @@ class QuizSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """Erstellt ein Quiz und die zugehörigen Question-Objekte."""
+
         questions_data = validated_data.pop("questions")
         quiz = Quiz.objects.create(**validated_data)
         Question.objects.bulk_create(

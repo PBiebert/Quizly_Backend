@@ -12,7 +12,8 @@ from .serializers import CookieTokenObtainPairSerializer, RegistrationSerializer
 
 
 def get_tokens_for_user(user):
-    """Erzeugt Access- und Refresh-Token für einen gegebenen User.
+    """
+    Erzeugt Access- und Refresh-Token für einen gegebenen User.
 
     Args:
         user: Registrierter und aktiver User.
@@ -33,7 +34,8 @@ def get_tokens_for_user(user):
 
 
 def set_tokens_as_cookies(response, tokens):
-    """Setzt die Access- und Refresh-Token als HttpOnly-Cookies im Response-Objekt.
+    """
+    Setzt die Access- und Refresh-Token als HttpOnly-Cookies im Response-Objekt.
 
     Args:
         response: DRF-Response-Objekt, auf dem die Cookies gesetzt werden.
@@ -58,14 +60,18 @@ def set_tokens_as_cookies(response, tokens):
 
 
 class RegistrationView(APIView):
-    """Registrierungs-View, die einen neuen User anlegt und ihn direkt
-    einloggt, indem Access-/Refresh-Token als HttpOnly-Cookies gesetzt werden."""
+    """
+    Registrierungs-View, die einen neuen User anlegt und ihn direkt
+    einloggt, indem Access-/Refresh-Token als HttpOnly-Cookies gesetzt werden.
+    """
 
     permission_classes = [AllowAny]
 
     def post(self, request):
-        """Legt einen neuen User an und setzt Access-/Refresh-Token als
-        HttpOnly-Cookies, sodass der User direkt eingeloggt ist."""
+        """
+        Legt einen neuen User an und setzt Access-/Refresh-Token als
+        HttpOnly-Cookies, sodass der User direkt eingeloggt ist.
+        """
 
         serializer = RegistrationSerializer(data=request.data)
 
@@ -113,21 +119,25 @@ class LoginView(TokenObtainPairView):
 
 
 class LogoutView(APIView):
-    """Loggt den User aus, indem das Refresh-Token blacklisted und beide
-    Token-Cookies gelöscht werden."""
+    """
+    Loggt den User aus, indem das Refresh-Token blacklisted und beide
+    Token-Cookies gelöscht werden.
+    """
 
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
-        """Blacklistet das Refresh-Token aus dem Cookie und löscht die
-        Access-/Refresh-Token-Cookies."""
+        """
+        Blacklistet das Refresh-Token aus dem Cookie und löscht die
+        Access-/Refresh-Token-Cookies.
+        """
 
         refresh_token = request.COOKIES.get("refresh_token")
 
         if refresh_token is None:
             return Response(
                 {"detail": "Refresh token not found!"},
-                status=status.HTTP_400_BAD_REQUEST,
+                status=status.HTTP_401_UNAUTHORIZED,
             )
 
         try:
@@ -135,13 +145,14 @@ class LogoutView(APIView):
         except TokenError:
             return Response(
                 {"detail": "Refresh token is invalid!"},
-                status=status.HTTP_400_BAD_REQUEST,
+                status=status.HTTP_401_UNAUTHORIZED,
             )
 
         response = Response(
             {
                 "detail": "Abmeldung erfolgreich! Alle Tokens werden gelöscht. Das Refresh-Token ist nun ungültig."
-            }
+            },
+            status=status.HTTP_200_OK,
         )
 
         response.delete_cookie("access_token", samesite="Lax")
@@ -151,25 +162,24 @@ class LogoutView(APIView):
 
 
 class CookieTokenRefreshView(TokenRefreshView):
-    """Refresh-View, die den Refresh-Token aus dem Cookie statt aus dem
+    """
+    Refresh-View, die den Refresh-Token aus dem Cookie statt aus dem
     Request-Body liest und das neue Access-Token wieder als HttpOnly-Cookie
     setzt.
-
-    Nötig, weil der Refresh-Token als HttpOnly-Cookie gespeichert ist und
-    daher von JavaScript nicht ausgelesen und in den Request-Body gepackt
-    werden kann - die Standard-TokenRefreshView erwartet ihn aber im Body.
     """
 
     def post(self, request, *args, **kwargs):
-        """Liest das Refresh-Token aus dem Cookie, validiert es und setzt
-        ein neues Access-Token als HttpOnly-Cookie."""
+        """
+        Liest das Refresh-Token aus dem Cookie, validiert es und setzt
+        ein neues Access-Token als HttpOnly-Cookie.
+        """
 
         refresh_token = request.COOKIES.get("refresh_token")
 
         if refresh_token is None:
             return Response(
                 {"detail": "Refresh token not found!"},
-                status=status.HTTP_400_BAD_REQUEST,
+                status=status.HTTP_401_UNAUTHORIZED,
             )
 
         serializer = self.get_serializer(data={"refresh": refresh_token})
@@ -183,7 +193,9 @@ class CookieTokenRefreshView(TokenRefreshView):
 
         access_token = serializer.validated_data.get("access")
 
-        response = Response({"detail": "Access-Token refreshed"})
+        response = Response(
+            {"detail": "Access-Token refreshed"}, status=status.HTTP_200_OK
+        )
         response.set_cookie(
             key="access_token",
             value=access_token,
