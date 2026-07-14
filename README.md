@@ -187,7 +187,7 @@ Creation, management and retrieval of quizzes
 
 The corresponding frontend repository can be found here:
 
-[Frontend Repository](#) — Coming soon
+[Frontend Repository](https://github.com/PBiebert/Quizly_Frontend)
 
 ---
 
