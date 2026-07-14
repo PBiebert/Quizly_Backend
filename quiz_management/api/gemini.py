@@ -7,9 +7,9 @@ from quiz_management.api.prompts import build_quiz_prompt
 
 
 class QuestionSchema(BaseModel):
-    """Pydantic-Schema für eine einzelne Frage im Gemini-Response-JSON.
+    """Pydantic schema for a single question in the Gemini response JSON.
 
-    question_options muss genau 4 Einträge enthalten.
+    question_options must contain exactly 4 entries.
     """
 
     question_title: str
@@ -18,11 +18,11 @@ class QuestionSchema(BaseModel):
 
 
 class QuizSchema(BaseModel):
-    """Pydantic-Schema für das Gemini-Response-JSON eines Quiz.
+    """Pydantic schema for the Gemini response JSON of a quiz.
 
-    Wird als response_format-Schema an die Gemini API übergeben, um die
-    Struktur der generierten Quiz-Daten zu erzwingen. questions muss genau
-    10 Einträge enthalten.
+    Passed as the response_format schema to the Gemini API to enforce the
+    structure of the generated quiz data. questions must contain exactly
+    10 entries.
     """
 
     title: str
@@ -31,13 +31,13 @@ class QuizSchema(BaseModel):
 
 
 def generate_quiz(transcript: str) -> dict:
-    """Generiert ein Quiz-JSON aus einem Transkript über die Gemini API.
+    """Generates a quiz JSON from a transcript via the Gemini API.
 
     args:
-        transcript (str): Der transkribierte Text (z. B. von Whisper).
+        transcript (str): The transcribed text (e.g. from Whisper).
 
     returns:
-        dict: Die Quiz-Daten (title, description, questions).
+        dict: The quiz data (title, description, questions).
     """
     client = genai.Client()
 

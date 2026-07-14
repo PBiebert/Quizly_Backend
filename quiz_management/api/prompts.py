@@ -1,11 +1,11 @@
 def build_quiz_prompt(transcript):
-    """Baut den Prompt für die Quiz-Generierung aus einem Transkript.
+    """Builds the prompt for quiz generation from a transcript.
 
     args:
-        transcript (str): Der transkribierte Text (z. B. von Whisper).
+        transcript (str): The transcribed text (e.g. from Whisper).
 
     returns:
-        str: Der vollständige Prompt-Text, der an Gemini geschickt wird.
+        str: The complete prompt text sent to Gemini.
     """
 
     return f"""

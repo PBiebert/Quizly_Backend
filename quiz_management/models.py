@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Quiz(models.Model):
-    """Ein aus einem YouTube-Video generiertes Quiz mit zugehörigen Fragen."""
+    """A quiz generated from a YouTube video, with its associated questions."""
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name="quizzes", on_delete=models.CASCADE
@@ -19,7 +19,7 @@ class Quiz(models.Model):
 
 
 class Question(models.Model):
-    """Eine Multiple-Choice-Frage mit genau 4 Optionen, zugehörig zu einem Quiz."""
+    """A multiple-choice question with exactly 4 options, belonging to a quiz."""
 
     quiz = models.ForeignKey(Quiz, related_name="questions", on_delete=models.CASCADE)
     question_title = models.CharField(max_length=255)

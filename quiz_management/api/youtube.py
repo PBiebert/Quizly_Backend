@@ -8,12 +8,10 @@ path = str(MEDIA_DIR / "%(id)s.%(ext)s")
 
 
 def download_audio(url):
-    """
-    Lädt die Audiospur eines YouTube-Videos herunter und gibt den
-    Dateipfad zurück.
+    """Downloads the audio track of a YouTube video and returns the file path.
 
     returns:
-        str: Der Datei-Pfad zur heruntergeladenen Audiodatei.
+        str: The file path to the downloaded audio file.
     """
 
     os.makedirs(MEDIA_DIR, exist_ok=True)
@@ -30,13 +28,12 @@ def download_audio(url):
 
 
 def delete_temp_audio(path):
-    """
-    Löscht die temporäre Audiodatei.
+    """Deletes the temporary audio file.
 
     args:
-        path (str): Der Datei-Pfad zur temporären Audiodatei.
+        path (str): The file path to the temporary audio file.
     """
 
     if os.path.exists(path):
         os.remove(path)
-        print(f"Temporäre Datei {path} wurde gelöscht.")
+        print(f"Temporary file {path} was deleted.")

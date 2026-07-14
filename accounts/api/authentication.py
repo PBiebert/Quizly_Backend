@@ -2,15 +2,15 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class CookieJWTAuthentication(JWTAuthentication):
-    """Authentifiziert Requests über das Access-Token im HttpOnly-Cookie
-    statt über den Authorization-Header."""
+    """Authenticates requests via the access token in the HttpOnly cookie
+    instead of the Authorization header."""
 
     def authenticate(self, request):
-        """Validiert das access_token-Cookie und ermittelt den zugehörigen User.
+        """Validates the access_token cookie and resolves the associated user.
 
         Returns:
-            Ein (User, validated_token)-Tupel bei gültigem Token, sonst
-            None (kein Cookie vorhanden -> Request bleibt unauthentifiziert).
+            A (user, validated_token) tuple for a valid token, otherwise
+            None (no cookie present -> request stays unauthenticated).
         """
         raw_token = request.COOKIES.get("access_token")
         if raw_token is None:

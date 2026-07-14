@@ -13,42 +13,40 @@ from quiz_management.models import Quiz
 
 
 class QuizListCreateView(generics.ListCreateAPIView):
-    """Listet die Quizze des eingeloggten Users und erstellt neue Quizze aus einer Video-URL.
+    """Lists the logged-in user's quizzes and creates new quizzes from a video URL.
 
-    GET liefert alle Quizze des Requesters über QuizSerializer.
-    POST lädt das Audio der übergebenen URL herunter, transkribiert es via
-    Whisper, lässt daraus über Gemini ein Quiz generieren und speichert es
-    über QuizCreateSerializer.
+    GET returns all quizzes belonging to the requester via QuizSerializer.
+    POST downloads the audio for the given URL, transcribes it via
+    Whisper, generates the quiz data from the transcript via Gemini, and
+    saves it via QuizCreateSerializer.
     """
 
     serializer_class = QuizSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        """Gibt die Quiz-QuerySet gefiltert auf den eingeloggten User zurück."""
+        """Returns the Quiz queryset filtered to the logged-in user."""
 
         return Quiz.objects.filter(user=self.request.user)
 
     def get_serializer_class(self):
-        """
-        Wählt den Serializer abhängig von der HTTP-Methode.
+        """Selects the serializer based on the HTTP method.
 
         Returns:
-            QuizCreateSerializer bei POST (inkl. Timestamps bei den
-            nested Questions), sonst QuizSerializer.
+            QuizCreateSerializer for POST (including timestamps on the
+            nested questions), otherwise QuizSerializer.
         """
         if self.request.method == "POST":
             return QuizCreateSerializer
         return QuizSerializer
 
     def post(self, request, *args, **kwargs):
-        """
-        Erstellt ein Quiz aus der im Request-Body übergebenen Video-URL.
+        """Creates a quiz from the video URL given in the request body.
 
-        Ablauf: URL validieren, Audio herunterladen, per Whisper
-        transkribieren, Transkript an Gemini übergeben um die Quiz-Daten
-        zu generieren, temporäre Audiodatei löschen und das Ergebnis dem
-        eingeloggten User zugeordnet speichern.
+        Flow: validate the URL, download the audio, transcribe it via
+        Whisper, pass the transcript to Gemini to generate the quiz data,
+        delete the temporary audio file, and save the result assigned to
+        the logged-in user.
         """
 
         url = request.data.get("url")
@@ -56,7 +54,7 @@ class QuizListCreateView(generics.ListCreateAPIView):
             URLValidator()(url)
         except (ValidationError, TypeError):
             return Response(
-                {"detail": "Ungültige URL oder Anfragedaten."},
+                {"detail": "Invalid URL or request data."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
@@ -75,16 +73,14 @@ class QuizListCreateView(generics.ListCreateAPIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def list(self, request, *args, **kwargs):
-        """
-        Gibt alle Quizze des eingeloggten Users zurück.
-        """
+        """Returns all quizzes belonging to the logged-in user."""
 
         serializer = self.get_serializer(self.get_queryset(), many=True)
         return Response(serializer.data)
 
 
 class QuizDetailView(generics.RetrieveUpdateDestroyAPIView):
-    """Ruft ein einzelnes Quiz ab, aktualisiert es teilweise oder löscht es."""
+    """Retrieves a single quiz, partially updates it, or deletes it."""
 
     http_method_names = ["get", "patch", "delete"]
     serializer_class = QuizSerializer

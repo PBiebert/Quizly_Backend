@@ -12,14 +12,13 @@ from .serializers import CookieTokenObtainPairSerializer, RegistrationSerializer
 
 
 def get_tokens_for_user(user):
-    """
-    Erzeugt Access- und Refresh-Token für einen gegebenen User.
+    """Creates access and refresh tokens for a given user.
 
     Args:
-        user: Registrierter und aktiver User.
+        user: A registered and active user.
 
     Returns:
-        dict[str, str]: Dictionary mit den Schlüsseln "access" und "refresh".
+        dict[str, str]: Dictionary with the keys "access" and "refresh".
     """
 
     if not user.is_active:
@@ -34,12 +33,11 @@ def get_tokens_for_user(user):
 
 
 def set_tokens_as_cookies(response, tokens):
-    """
-    Setzt die Access- und Refresh-Token als HttpOnly-Cookies im Response-Objekt.
+    """Sets the access and refresh tokens as HttpOnly cookies on the response.
 
     Args:
-        response: DRF-Response-Objekt, auf dem die Cookies gesetzt werden.
-        tokens: Dictionary mit den Schlüsseln "access" und "refresh".
+        response: DRF Response object the cookies are set on.
+        tokens: Dictionary with the keys "access" and "refresh".
     """
 
     response.set_cookie(
@@ -60,18 +58,14 @@ def set_tokens_as_cookies(response, tokens):
 
 
 class RegistrationView(APIView):
-    """
-    Registrierungs-View, die einen neuen User anlegt und ihn direkt
-    einloggt, indem Access-/Refresh-Token als HttpOnly-Cookies gesetzt werden.
-    """
+    """Registration view that creates a new user and logs them in directly
+    by setting access/refresh tokens as HttpOnly cookies."""
 
     permission_classes = [AllowAny]
 
     def post(self, request):
-        """
-        Legt einen neuen User an und setzt Access-/Refresh-Token als
-        HttpOnly-Cookies, sodass der User direkt eingeloggt ist.
-        """
+        """Creates a new user and sets access/refresh tokens as HttpOnly
+        cookies, so the user is logged in immediately."""
 
         serializer = RegistrationSerializer(data=request.data)
 
@@ -92,20 +86,21 @@ class RegistrationView(APIView):
 
 
 class LoginView(TokenObtainPairView):
-    """Login-View, die JWT Access- und Refresh-Token statt im Response-Body
-    als HttpOnly-Cookies zurückgibt.
+    """Login view that returns JWT access and refresh tokens as HttpOnly
+    cookies instead of in the response body.
 
-    Erbt von TokenObtainPairView (SimpleJWT) und überschreibt post(), um die
-    Token nach erfolgreicher Authentifizierung in Cookies zu setzen anstatt
-    sie im JSON-Body preiszugeben (Schutz vor XSS-Zugriff auf die Token).
+    Inherits from TokenObtainPairView (SimpleJWT) and overrides post() to
+    set the tokens as cookies after successful authentication instead of
+    exposing them in the JSON body (protection against XSS access to the
+    tokens).
     """
 
     permission_classes = [AllowAny]
     serializer_class = CookieTokenObtainPairSerializer
 
     def post(self, request, *args, **kwargs):
-        """Authentifiziert den User und setzt Access-/Refresh-Token als
-        HttpOnly-Cookies."""
+        """Authenticates the user and sets access/refresh tokens as
+        HttpOnly cookies."""
         response = super().post(request, *args, **kwargs)
 
         access = response.data.get("access")
@@ -119,18 +114,14 @@ class LoginView(TokenObtainPairView):
 
 
 class LogoutView(APIView):
-    """
-    Loggt den User aus, indem das Refresh-Token blacklisted und beide
-    Token-Cookies gelöscht werden.
-    """
+    """Logs the user out by blacklisting the refresh token and deleting
+    both token cookies."""
 
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
-        """
-        Blacklistet das Refresh-Token aus dem Cookie und löscht die
-        Access-/Refresh-Token-Cookies.
-        """
+        """Blacklists the refresh token from the cookie and deletes the
+        access/refresh token cookies."""
 
         refresh_token = request.COOKIES.get("refresh_token")
 
@@ -150,7 +141,7 @@ class LogoutView(APIView):
 
         response = Response(
             {
-                "detail": "Abmeldung erfolgreich! Alle Tokens werden gelöscht. Das Refresh-Token ist nun ungültig."
+                "detail": "Log-Out successfully! All Tokens will be deleted. Refresh token is now invalid."
             },
             status=status.HTTP_200_OK,
         )
@@ -162,17 +153,13 @@ class LogoutView(APIView):
 
 
 class CookieTokenRefreshView(TokenRefreshView):
-    """
-    Refresh-View, die den Refresh-Token aus dem Cookie statt aus dem
-    Request-Body liest und das neue Access-Token wieder als HttpOnly-Cookie
-    setzt.
-    """
+    """Refresh view that reads the refresh token from the cookie instead of
+    the request body and sets the new access token again as an HttpOnly
+    cookie."""
 
     def post(self, request, *args, **kwargs):
-        """
-        Liest das Refresh-Token aus dem Cookie, validiert es und setzt
-        ein neues Access-Token als HttpOnly-Cookie.
-        """
+        """Reads the refresh token from the cookie, validates it and sets a
+        new access token as an HttpOnly cookie."""
 
         refresh_token = request.COOKIES.get("refresh_token")
 
@@ -193,9 +180,7 @@ class CookieTokenRefreshView(TokenRefreshView):
 
         access_token = serializer.validated_data.get("access")
 
-        response = Response(
-            {"detail": "Access-Token refreshed"}, status=status.HTTP_200_OK
-        )
+        response = Response({"detail": "Token refreshed"}, status=status.HTTP_200_OK)
         response.set_cookie(
             key="access_token",
             value=access_token,
