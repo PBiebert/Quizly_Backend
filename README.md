@@ -33,7 +33,6 @@ this backend via these endpoints.
 
 ### Installing FFmpeg
 
-
 **Windows – via terminal**
 
 ```bash
@@ -119,16 +118,7 @@ sudo apt update && sudo apt install ffmpeg
    python manage.py migrate
    ```
 
-7. Run the test suite once to verify that everything is configured correctly:
-
-   ```bash
-   python manage.py test --settings=core.test_settings
-   ```
-
-   > **Important:** `core.test_settings` must be used for test execution only.
-   > Do not use these settings for normal development or production runs.
-
-8. Start the development server:
+7. Start the development server:
 
    ```bash
    python manage.py runserver
@@ -162,24 +152,24 @@ sudo apt update && sudo apt install ffmpeg
 
 Login and registration
 
-| Method | Endpoint              | Description           | Auth required | Access         |
-| ------ | ---------------------- | ---------------------- | -------------- | -------------- |
-| POST   | `/api/register/`       | Register a new user     | No             | All            |
-| POST   | `/api/login/`          | Log in a user           | No             | All            |
-| POST   | `/api/logout/`         | Log out a user          | Yes            | Logged-in user |
-| POST   | `/api/token/refresh/`  | Refresh access token    | Yes            | Logged-in user |
+| Method | Endpoint              | Description          | Auth required | Access         |
+| ------ | --------------------- | -------------------- | ------------- | -------------- |
+| POST   | `/api/register/`      | Register a new user  | No            | All            |
+| POST   | `/api/login/`         | Log in a user        | No            | All            |
+| POST   | `/api/logout/`        | Log out a user       | Yes           | Logged-in user |
+| POST   | `/api/token/refresh/` | Refresh access token | Yes           | Logged-in user |
 
 ### Quiz Management
 
 Creation, management and retrieval of quizzes
 
-| Method | Endpoint             | Description        | Auth required | Access         |
-| ------ | --------------------- | -------------------- | -------------- | -------------- |
-| POST   | `/api/quizzes/`       | Create a new quiz     | Yes            | Logged-in user |
-| GET    | `/api/quizzes/`       | List all quizzes      | Yes            | Logged-in user |
-| GET    | `/api/quizzes/{id}/`  | Retrieve one quiz      | Yes            | Logged-in user |
-| PATCH  | `/api/quizzes/{id}/`  | Update one quiz        | Yes            | Quiz owner     |
-| DELETE | `/api/quizzes/{id}/`  | Delete one quiz        | Yes            | Quiz owner     |
+| Method | Endpoint             | Description       | Auth required | Access         |
+| ------ | -------------------- | ----------------- | ------------- | -------------- |
+| POST   | `/api/quizzes/`      | Create a new quiz | Yes           | Logged-in user |
+| GET    | `/api/quizzes/`      | List all quizzes  | Yes           | Logged-in user |
+| GET    | `/api/quizzes/{id}/` | Retrieve one quiz | Yes           | Logged-in user |
+| PATCH  | `/api/quizzes/{id}/` | Update one quiz   | Yes           | Quiz owner     |
+| DELETE | `/api/quizzes/{id}/` | Delete one quiz   | Yes           | Quiz owner     |
 
 ---
 
